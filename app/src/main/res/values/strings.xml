@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">Timo RxJava</string>
+    <string name="txt_launch_card_activity">Card</string>
+    <string name="txt_launch_subscription_activity">Subscription</string>
+    <string name="txt_launch_flickr_activity">Flickr</string>
+
+    <!-- card -->
+    <string name="txt_type_something_hint">Type something ..</string>
+    <string name="txt_type_result_error">Text too long</string>
+    <string name="txt_card_number_hint">Type your card number</string>
+    <string name="txt_card_cvc_hint">Type your card cvc</string>
+    <string name="txt_card_is_valid_toast">Your card is valid, great job!</string>
+    <string name="txt_card_number_check_toast">Check your card numbers, something went wrong!</string>
+    <string name="txt_check_card_validity_toast">Check when your card expires!</string>
+    <string name="txt_card_not_valid_toast">Your card is not valid, shame on you :)</string>
+    <string name="txt_submit">Submit</string>
+
+    <!-- subscription -->
+    <string name="txt_first">First</string>
+    <string name="txt_second">Second</string>
+    <string name="txt_third">Third</string>
+    <string name="txt_release">Release</string>
+
+    <!-- flickr -->
+    <string name="txt_search_hint">Search by..</string>
+</resources>
