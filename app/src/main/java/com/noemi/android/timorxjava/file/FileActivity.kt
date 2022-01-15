@@ -6,6 +6,7 @@ import android.util.Log
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.noemi.android.timorxjava.R
+import com.noemi.android.timorxjava.showDialogFragment
 import dagger.hilt.android.AndroidEntryPoint
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -20,10 +21,14 @@ class FileActivity : AppCompatActivity() {
 
     private val viewModel: FileViewModel by viewModels()
 
-    private val adapter by lazy { FileAdapter(fileListener) }
+    private val adapter by lazy { FileAdapter(fileListener, fileLongClickListener) }
 
     private val fileListener: FileClickListener = {
         createFileClickObservable(it)
+    }
+
+    private val fileLongClickListener: FileLongClickListener = {
+        displayImage(it)
     }
 
     private val backObservable = PublishSubject.create<Any>()
@@ -113,5 +118,19 @@ class FileActivity : AppCompatActivity() {
             }
         }
         return files
+    }
+
+    private fun displayImage(file: File) {
+        showDialogFragment(FilePictureFragment().apply {
+            isCancelable = true
+            arguments = Bundle().apply {
+                putString(EXTRA_FILE_PATH, file.absolutePath)
+            }
+        }, DIALOG_TAG)
+    }
+
+    companion object {
+        const val DIALOG_TAG = "dialog_tag"
+        const val EXTRA_FILE_PATH = "extra_file_path"
     }
 }

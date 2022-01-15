@@ -8,7 +8,8 @@ import java.io.File
 
 class FileVH(
     view: View,
-    private val callback: FileClickListener?
+    private val callback: FileClickListener?,
+    private val fileLongClickListener: FileLongClickListener?
 ) : RecyclerView.ViewHolder(view) {
 
     fun bind(file: File) {
@@ -16,6 +17,13 @@ class FileVH(
         fileTag.text = if (file.isDirectory) file.name + "/" else file.name
         itemView.setOnClickListener {
             callback?.let { callback.invoke(file) }
+        }
+
+        if (file.name.endsWith(".png") || file.name.endsWith(".jpg")) {
+            itemView.setOnLongClickListener {
+                fileLongClickListener?.invoke(file)
+                true
+            }
         }
     }
 }
