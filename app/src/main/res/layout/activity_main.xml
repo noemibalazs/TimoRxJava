@@ -22,20 +22,6 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tvLaunchSubscriptionActivity"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:padding="8dp"
-        android:text="@string/txt_launch_subscription_activity"
-        android:textAlignment="center"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvLaunchCardActivity" />
-
-    <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvLaunchFlickrActivity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -47,7 +33,22 @@
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvLaunchSubscriptionActivity" />
+        app:layout_constraintTop_toBottomOf="@id/tvLaunchCardActivity" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvLaunchFileActivity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:padding="8dp"
+        android:text="@string/txt_launch_file_activity"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:enabled="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvLaunchFlickrActivity" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

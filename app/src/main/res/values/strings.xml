@@ -3,6 +3,7 @@
     <string name="txt_launch_card_activity">Card</string>
     <string name="txt_launch_subscription_activity">Subscription</string>
     <string name="txt_launch_flickr_activity">Flickr</string>
+    <string name="txt_launch_file_activity">File</string>
 
     <!-- card -->
     <string name="txt_type_something_hint">Type something ..</string>
@@ -23,4 +24,8 @@
 
     <!-- flickr -->
     <string name="txt_search_hint">Search by..</string>
+
+    <!-- file -->
+    <string name="txt_home">Home</string>
+    <string name="txt_back">Back</string>
 </resources>
