@@ -19,7 +19,7 @@ class FileVH(
             callback?.let { callback.invoke(file) }
         }
 
-        if (file.name.endsWith(".png") || file.name.endsWith(".jpg")) {
+        if (file.name.endsWith(".png") || file.name.endsWith(".jpg") || file.name.endsWith(".jpeg")) {
             itemView.setOnLongClickListener {
                 fileLongClickListener?.invoke(file)
                 true
