@@ -6,7 +6,9 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import com.jakewharton.rxbinding4.view.clicks
 import com.noemi.android.timorxjava.card.CardValidationActivity
+import com.noemi.android.timorxjava.coffee_break.CoffeeBreaksActivity
 import com.noemi.android.timorxjava.file.FileActivity
 import com.noemi.android.timorxjava.flickr.ui.FlickrActivity
 import kotlinx.android.synthetic.main.activity_main.*
@@ -19,16 +21,20 @@ class MainActivity : AppCompatActivity() {
 
         checksPermission()
 
-        tvLaunchCardActivity.setOnClickListener {
+        tvLaunchCardActivity.clicks().subscribe {
             launchActivity(CardValidationActivity::class.java)
         }
 
-        tvLaunchFlickrActivity.setOnClickListener {
+        tvLaunchFlickrActivity.clicks().subscribe {
             launchActivity(FlickrActivity::class.java)
         }
 
-        tvLaunchFileActivity.setOnClickListener {
+        tvLaunchFileActivity.clicks().subscribe {
             launchActivity(FileActivity::class.java)
+        }
+
+        tvLaunchCoffeeActivity.clicks().subscribe {
+            launchActivity(CoffeeBreaksActivity::class.java)
         }
     }
 

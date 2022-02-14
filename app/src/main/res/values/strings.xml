@@ -4,6 +4,7 @@
     <string name="txt_launch_subscription_activity">Subscription</string>
     <string name="txt_launch_flickr_activity">Flickr</string>
     <string name="txt_launch_file_activity">File</string>
+    <string name="txt_launch_coffee_activity">Coffee</string>
 
     <!-- card -->
     <string name="txt_type_something_hint">Type something ..</string>
@@ -21,6 +22,9 @@
     <string name="txt_second">Second</string>
     <string name="txt_third">Third</string>
     <string name="txt_release">Release</string>
+    <string name="txt_show_message">Show IT</string>
+    <string name="txt_title_hint">Title</string>
+    <string name="txt_title_content">Message</string>
 
     <!-- flickr -->
     <string name="txt_search_hint">Search by..</string>

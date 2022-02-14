@@ -134,7 +134,8 @@ class CardValidationActivity : AppCompatActivity() {
 
         val isValidCardType: Observable<Boolean> =
             etCardNumber.textChanges().debounce(150, TimeUnit.MILLISECONDS)
-                .observeOn(AndroidSchedulers.mainThread()).map {
+                .observeOn(AndroidSchedulers.mainThread())
+                .map {
                     viewModel.cardType.value = CardType.getCardType(it.toString())
                 }.map {
                     viewModel.cardType.value != CardType.UNKNOWN

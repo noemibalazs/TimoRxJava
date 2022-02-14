@@ -1,29 +1,34 @@
-package com.noemi.android.timorxjava.subscription
+package com.noemi.android.timorxjava.coffee_break
 
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.jakewharton.rxbinding4.view.clicks
+import com.jakewharton.rxbinding4.widget.textChanges
 import com.noemi.android.timorxjava.R
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.core.Observable
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import io.reactivex.rxjava3.disposables.SerialDisposable
 import io.reactivex.subjects.BehaviorSubject
-import kotlinx.android.synthetic.main.activity_subscription.*
+import kotlinx.android.synthetic.main.activity_coffee_breaks.*
+import java.util.*
 import java.util.concurrent.TimeUnit
 
-class SubscriptionActivity : AppCompatActivity() {
+class CoffeeBreaksActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_subscription)
+        setContentView(R.layout.activity_coffee_breaks)
 
-        //serialExample()
-        //compositeExample()
-         withLatest()
-//        customObservables()
+//        serialExample()
+//        compositeExample()
+//         withLatest()
+//         customObservables()
+
+        showDialog()
     }
 
     private fun serialExample() {
@@ -94,7 +99,7 @@ class SubscriptionActivity : AppCompatActivity() {
             .subscribe { s: String? -> Log.d("TAG", "Latest with: $s") }
     }
 
-    private fun customObservables(){
+    private fun customObservables() {
         val emitter = io.reactivex.Observable.interval(5, TimeUnit.SECONDS)
             .map { it.toString() }
             .observeOn(io.reactivex.android.schedulers.AndroidSchedulers.mainThread())
@@ -121,5 +126,32 @@ class SubscriptionActivity : AppCompatActivity() {
                     Toast.makeText(this, "Your name is $it", Toast.LENGTH_LONG).show()
                 }
         }
+    }
+
+    private fun showDialog() {
+        val titleObservable: Observable<String> = etTitle.textChanges().map { it.toString() }
+        val messageObservable: Observable<String> = etMessage.textChanges().map { it.toString() }
+
+        val dialogInfo: Observable<Pair<String, String>> =
+            Observable.combineLatest(titleObservable, messageObservable, { title, message ->
+                Pair(title, message)
+            })
+
+        val infoToShow: Observable<Pair<String, String>> =
+            btShowDialog.clicks().map { }
+                .withLatestFrom(dialogInfo, { _, info ->
+                    Pair(info.first, info.second)
+                })
+
+        infoToShow.observeOn(AndroidSchedulers.mainThread())
+            .subscribe {
+                AlertDialog.Builder(this).setTitle(it.first).setMessage(it.second).create().show()
+                etTitle.setText("")
+                etMessage.setText("")
+            }
+    }
+
+    companion object {
+        const val TAG = "CoffeeActivity"
     }
 }
