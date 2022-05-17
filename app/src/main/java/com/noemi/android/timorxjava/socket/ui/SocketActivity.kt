@@ -57,13 +57,13 @@ class SocketActivity : AppCompatActivity() {
                     return when (text.isNotBlank()) {
                         true -> {
                             val message = Gson().toJson(ChatMessage(message = text))
-                            socket?.emit("chat message", message)
+                            socket?.emit(EVENT, message)
                             val emitter = Emitter.Listener {
                                 viewModel.chatMessage.onNext(it[0] as String)
                             }
-                            socket?.on("chat message", emitter)
+                            socket?.on(EVENT, emitter)
                             Disposables.fromAction {
-                                socket?.off("chat message", emitter)
+                                socket?.off(EVENT, emitter)
                             }
                             etMessage.setText("")
                             closeKeyboard()
@@ -92,7 +92,7 @@ class SocketActivity : AppCompatActivity() {
     }
 
     private fun connectSocket() {
-        socket?.on("connect") {
+        socket?.on(EVENT) {
             Log.d(TAG, "Listening the socket")
         }
         socket?.connect()
@@ -121,5 +121,6 @@ class SocketActivity : AppCompatActivity() {
 
     companion object {
         const val TAG = "SocketActivity"
+        const val EVENT = "chat message"
     }
 }
