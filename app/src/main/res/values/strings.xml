@@ -5,6 +5,8 @@
     <string name="txt_launch_flickr_activity">Flickr</string>
     <string name="txt_launch_file_activity">File</string>
     <string name="txt_launch_coffee_activity">Coffee</string>
+    <string name="txt_launch_chat_activity">Chat</string>
+    <string name="txt_launch_tic_tac_activity">Tic Tac</string>
 
     <!-- card -->
     <string name="txt_type_something_hint">Type something ..</string>
@@ -32,4 +34,16 @@
     <!-- file -->
     <string name="txt_home">Home</string>
     <string name="txt_back">Back</string>
+
+    <!-- tic tac -->
+    <string name="tic_tac_toe">Tic Tac Toe</string>
+    <string name="status">Status</string>
+    <string name="player_turn_to_play">%s \' Turn - Tap to play</string>
+    <string name="x_won">X has won</string>
+    <string name="o_won">O has won</string>
+    <string name="match_draw">Match draw</string>
+
+    <!-- Chat message -->
+    <string name="hint_your_message">Idea to share?</string>
+    <string name="placeholder_text">Idea</string>
 </resources>

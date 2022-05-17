@@ -8,9 +8,10 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.jakewharton.rxbinding4.view.clicks
 import com.noemi.android.timorxjava.card.CardValidationActivity
-import com.noemi.android.timorxjava.coffee_break.CoffeeBreaksActivity
 import com.noemi.android.timorxjava.file.FileActivity
 import com.noemi.android.timorxjava.flickr.ui.FlickrActivity
+import com.noemi.android.timorxjava.socket.ui.SocketActivity
+import com.noemi.android.timorxjava.tictactoe.TicTacToeActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -33,8 +34,12 @@ class MainActivity : AppCompatActivity() {
             launchActivity(FileActivity::class.java)
         }
 
-        tvLaunchCoffeeActivity.clicks().subscribe {
-            launchActivity(CoffeeBreaksActivity::class.java)
+        tvLaunchTicTacActivity.clicks().subscribe {
+            launchActivity(TicTacToeActivity::class.java)
+        }
+
+        tvLaunchChatActivity.clicks().subscribe {
+            launchActivity(SocketActivity::class.java)
         }
     }
 

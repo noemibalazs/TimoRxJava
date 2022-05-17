@@ -17,4 +17,3 @@ fun AppCompatActivity.showDialogFragment(dialogFragment: DialogFragment, tag: St
     }
     dialogFragment.show(transaction, tag)
 }
-

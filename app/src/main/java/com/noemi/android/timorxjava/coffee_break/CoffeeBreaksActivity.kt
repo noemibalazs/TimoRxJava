@@ -2,6 +2,9 @@ package com.noemi.android.timorxjava.coffee_break
 
 import android.os.Bundle
 import android.util.Log
+import android.view.View
+import android.widget.AdapterView
+import android.widget.ListView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -11,10 +14,11 @@ import com.noemi.android.timorxjava.R
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.core.Observable
 import io.reactivex.rxjava3.disposables.CompositeDisposable
+import io.reactivex.rxjava3.disposables.Disposable
 import io.reactivex.rxjava3.disposables.SerialDisposable
-import io.reactivex.subjects.BehaviorSubject
+import io.reactivex.rxjava3.subjects.BehaviorSubject
+
 import kotlinx.android.synthetic.main.activity_coffee_breaks.*
-import java.util.*
 import java.util.concurrent.TimeUnit
 
 class CoffeeBreaksActivity : AppCompatActivity() {
@@ -115,9 +119,9 @@ class CoffeeBreaksActivity : AppCompatActivity() {
 
         tvSecond.clicks().subscribe {
 
-            io.reactivex.Observable.combineLatest(
-                firstName.observeOn(io.reactivex.android.schedulers.AndroidSchedulers.mainThread()),
-                lastName.observeOn(io.reactivex.android.schedulers.AndroidSchedulers.mainThread()),
+            Observable.combineLatest(
+                firstName.observeOn(AndroidSchedulers.mainThread()),
+                lastName.observeOn(AndroidSchedulers.mainThread()),
                 { first, last -> String.format("%s %s", first, last) })
                 .doOnNext {
                     Log.d("TAG", "Name: $it")
@@ -151,7 +155,28 @@ class CoffeeBreaksActivity : AppCompatActivity() {
             }
     }
 
-    companion object {
-        const val TAG = "CoffeeActivity"
+    private fun createViewObservable(listView: ListView): Observable<View> {
+        return Observable.create {
+            val listener = AdapterView.OnItemClickListener { _, view, _, _ ->
+                it.onNext(view)
+            }
+            listView.onItemClickListener = listener
+            it.setDisposable(Disposable.fromAction {
+                if (listView.onItemClickListener == listener) {
+                    listView.onItemClickListener = null
+                }
+            })
+        }
+    }
+
+    private fun createIntegerObservable(): Observable<Int> {
+        var count = 0
+        return Observable.create {
+            it.onNext(count++)
+            it.setDisposable(Disposable.fromAction {
+                if (count > 0)
+                    count--
+            })
+        }
     }
 }

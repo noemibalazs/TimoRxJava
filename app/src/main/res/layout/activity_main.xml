@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -40,29 +39,43 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
+        android:enabled="false"
         android:padding="8dp"
         android:text="@string/txt_launch_file_activity"
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="20sp"
-        android:enabled="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvLaunchFlickrActivity" />
 
-
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tvLaunchCoffeeActivity"
+        android:id="@+id/tvLaunchTicTacActivity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
         android:padding="8dp"
-        android:text="@string/txt_launch_coffee_activity"
+        android:text="@string/txt_launch_tic_tac_activity"
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvLaunchFileActivity" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvLaunchChatActivity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:padding="8dp"
+        android:text="@string/txt_launch_chat_activity"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvLaunchTicTacActivity" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
